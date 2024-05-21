@@ -21,6 +21,8 @@ Imagine que João, um morador de Cidadópolis, emprestou dinheiro para seu amigo
 
 O projeto foi implementado utilizando a arquitetura limpa (Clean Architecture), garantindo uma separação clara das responsabilidades e facilitando a manutenção e escalabilidade do sistema. Para mais detalhes sobre Clean Architecture, consulte [este link](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html).
 
+![ImageArq](imageArq.png)
+
 ### Descrição das Pastas
 
 - src/domain/entities: Contém as definições das entidades do domínio.
