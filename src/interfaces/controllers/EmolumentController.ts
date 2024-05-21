@@ -4,7 +4,8 @@ import { CreateEmolumentDTO } from "../../entities/dtos/CreateEmolumentDTO";
 import { GetAllEmolumentUseCase } from "../../use_cases/Emolument/GetAllEmolumentUseCase";
 import Emolument from "../../entities/Emolument";
 import { GetEmolumentByIdUseCase } from "../../use_cases/Emolument/GetEmolumentByIdUseCase";
-import { UpdateEmolumentUseCase } from "../../use_cases/Emolument/GetEmolumentByIdUseCase copy";
+import { UpdateEmolumentUseCase } from "../../use_cases/Emolument/UpdateEmolumentUseCase";
+import { DeleteEmolumentUseCase } from "../../use_cases/Emolument/DeleteEmolumentUseCase";
 
 export class EmolumentController {
 
@@ -13,7 +14,7 @@ export class EmolumentController {
     private getAllEmolumentUseCase: GetAllEmolumentUseCase,
     private getEmolumentByIdUseCase: GetEmolumentByIdUseCase,
     private updateEmolumentUseCase: UpdateEmolumentUseCase,
-    // private deleteProtestUseCase: DeleteProtestUseCase,
+    private deleteEmolumentUseCase: DeleteEmolumentUseCase,
   ) {}
 
   async createEmolument(req: Request, res: Response): Promise<Response> {
@@ -63,15 +64,15 @@ export class EmolumentController {
     }
   }
 
-  // async deleteProtest(req: Request, res: Response): Promise<Response> {
-  //   try {
-  //     const id = Number(req.params.id);
+  async deleteEmolument(req: Request, res: Response): Promise<Response> {
+    try {
+      const id = Number(req.params.id);
 
-  //     await this.deleteProtestUseCase.execute(id);
+      await this.deleteEmolumentUseCase.execute(id);
 
-  //     return res.status(200).send({ message: 'Protest updated' });
-  //   } catch (err: any) {
-  //     return res.status(400).json({ message: err.message });
-  //   }
-  // }
+      return res.status(200).send({ message: 'Emolument deleted' });
+    } catch (err: any) {
+      return res.status(400).json({ message: err.message });
+    }
+  }
 }

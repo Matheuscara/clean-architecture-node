@@ -28,7 +28,8 @@ import { CreateEmolumentUseCase } from "./use_cases/Emolument/CreateEmolumentUse
 import { EmolumentRepository } from "./infrastructure/db/EmolumentRepository";
 import { GetAllEmolumentUseCase } from "./use_cases/Emolument/GetAllEmolumentUseCase";
 import { GetEmolumentByIdUseCase } from "./use_cases/Emolument/GetEmolumentByIdUseCase";
-import { UpdateEmolumentUseCase } from "./use_cases/Emolument/GetEmolumentByIdUseCase copy";
+import { UpdateEmolumentUseCase } from "./use_cases/Emolument/UpdateEmolumentUseCase";
+import { DeleteEmolumentUseCase } from "./use_cases/Emolument/DeleteEmolumentUseCase";
 
 dotenv.config();
 
@@ -79,12 +80,14 @@ const createEmolumentUseCase = new CreateEmolumentUseCase(emolumentRepository, p
 const getAllEmolumentUseCase = new GetAllEmolumentUseCase(emolumentRepository)
 const getEmolumentByIdUseCase = new GetEmolumentByIdUseCase(emolumentRepository)
 const updateEmolumentUseCase = new UpdateEmolumentUseCase(emolumentRepository, protestRepository)
+const deleteEmolumentUseCase = new DeleteEmolumentUseCase(emolumentRepository, protestRepository)
 
 const emolumentController = new EmolumentController(
   createEmolumentUseCase,
   getAllEmolumentUseCase,
   getEmolumentByIdUseCase,
-  updateEmolumentUseCase
+  updateEmolumentUseCase,
+  deleteEmolumentUseCase
 )
 
 app.use("/protests", protestRoutes(protestController));
@@ -92,7 +95,6 @@ app.use("/protests", protestRoutes(protestController));
 app.use("/users", userRoutes(userController));
 
 app.use("/emoluments", emolumentRoutes(emolumentController));
-
 
 app.use(bodyParser.json());
 

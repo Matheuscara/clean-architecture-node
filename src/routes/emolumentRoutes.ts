@@ -13,7 +13,7 @@ export const emolumentRoutes = (emolumentController: EmolumentController): Route
 
   router.put("/:id", authenticateJWT, (req, res) => emolumentController.updateEmolument(req, res));
 
-  // router.delete("/:id", authenticateJWT, (req, res) => protestController.deleteProtest(req, res));
+  router.delete("/:id", authenticateJWT, (req, res) => emolumentController.deleteEmolument(req, res));
 
   return router;
 };
